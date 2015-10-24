@@ -7,7 +7,8 @@ $(document).ready(function() {
 
   $(".search_btn").click(function(){
     var search = $(".search-box").val();
-    if (ipfs_wikis.indexOf(search) == -1) {
+
+    if (ipfs_wikis.indexOf(search.toLowerCase()) == -1) {
       wiki_extract(search, display_summary);
     }
     else {
@@ -30,13 +31,15 @@ function wiki_extract(word, callback) {
     $.each(data.query.pages, function(i) {
       $.each(data.query.pages[i], function(j) {
         if (j == "extract") {
-          if (data.query.pages[i][j].indexOf("may refer to or be used for:") > -1) {
+          //TODO: Make this more flexible so that users can get suggestions
+          if (data.query.pages[i][j].indexOf("may refer to") > -1) {
             $(".results").empty();
             $(".results").append("<span><h1 class='content-title'>No Content</h1></span>");
             $(".results").append("<span class='content-text'><p>Please be a bit more specific with your search query</p></span>");
           }
           else {
-            ipfs_wikis.push(data.query.pages[i]['title']);
+            ipfs_wikis.push(data.query.pages[i]['title'].toLowerCase());
+            console.log(ipfs_wikis);
             $.ajax({
         	    url : "/add",
         	    type: "POST",

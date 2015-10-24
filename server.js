@@ -22,7 +22,8 @@ app.get('/wikis', function(req,res) {
     wiki_ipfs = JSON.parse(data);
     var wiki_pages = [];
     for (var i = 0; i < wiki_ipfs.length; i++) {
-      wiki_pages.push(wiki_ipfs[i].name);
+      var wiki_name = wiki_ipfs[i].name;
+      wiki_pages.push(wiki_name.toLowerCase());
     }
     res.send(wiki_pages);
   });
@@ -55,15 +56,15 @@ app.post('/get', function(req,res) {
   var wiki_page = req.body.name;
   var hash;
   if (!wiki_ipfs) {
-    fs.readFile('./client/hashes.json', function(nothing,ret_obj) {
-      if(nothing || !ret_obj) return console.error(nothing);
+    fs.readFile('./client/hashes.json', function(error,data) {
+      if(error || !data) return console.error(error);
 
-      wiki_ipfs = JSON.parse(ret_obj);
+      wiki_ipfs = JSON.parse(data);
     });
   }
 
   for (var i = 0; i < wiki_ipfs.length; i++) {
-    if (wiki_ipfs[i].name == wiki_page) {
+    if (wiki_ipfs[i].name.toLowerCase() == wiki_page.toLowerCase()) {
       hash = wiki_ipfs[i].hash;
       break;
     }
