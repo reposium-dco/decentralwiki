@@ -1,4 +1,4 @@
-# Instant Wikipedia
+# Decentralized Wikipedia
 
 This is a Decentralized version of Wikipedia built on IPFS that offers users a search through Wikipedia. The way the application works is that it stores the JSON formatted Wikipedia extracts on IPFS and stores the object's hash in a local file called `hashes.json`.
 
