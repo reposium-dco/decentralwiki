@@ -3,6 +3,13 @@ var ipfs_wikis;
 $(document).ready(function() {
   $.get('/wikis', function(data){
     ipfs_wikis = data;
+
+    for (var i = 0; i < data.length; i++) {
+      var single_element = document.createElement("h3");
+      single_element.className = "single_element"
+      single_element.innerHTML = data[i];
+      $(".all_pages").append(single_element);
+    }
   });
 
   $(".search_btn").click(function(){
@@ -14,6 +21,12 @@ $(document).ready(function() {
     else {
       ipfs_extract(search, display_summary);
     }
+  });
+
+  $('body').on('click','.single_element',function(event){
+     var search = event.target.firstChild.data;
+     window.scrollTo(0,0);
+     ipfs_extract(search, display_summary);
   });
 });
 

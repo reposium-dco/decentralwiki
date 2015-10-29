@@ -14,9 +14,15 @@
 	color: #fff;
 }
 
+.subtitle {
+	margin-top: 20px;
+	font-size: 35px;
+	color: #fff;
+}
+
 .search-input {
 	margin-top: 50px;
-	margin-bottom: 20px;
+	margin-bottom: 40px;
 }
 
 .search-box {
@@ -53,6 +59,7 @@
 .results {
 	margin: 15px auto;
 	width: 75%;
+	min-height: 320px;
 }
 
 .content-title {
@@ -66,4 +73,28 @@
 	font-weight: 300;
 	letter-spacing: 2px;
 	text-align: justify;
+}
+
+.all_pages {
+	padding: 25px 50px;
+	background: #2b3e50;
+	min-height: 200px;
+	height: 100%;
+	width: 100%;
+	color: #fff;
+}
+
+.single_element {
+	display: inline-block;
+	margin: 10px 25px;
+}
+
+.single_element:hover {
+	cursor: pointer;
+}
+
+.pages_title {
+	font-size: 48px;
+	color: #fff;
+	margin: 25px 0 40px;
 }
