@@ -8,10 +8,11 @@ Upon a search request, if the searched for page is not backed up on IPFS already
 
 ## Prerequisites
 
-The obvious prerequisite is a fully operational IPFS daemon. I am utilizing Express for this application and the IPFS Node API, so if you haven't gotten that yet, run
+The obvious prerequisite is a fully operational IPFS daemon. I am utilizing Express for this application, the IPFS Node API and body-parser, so if you haven't gotten that yet, run
 ```
 $ npm install express --save
 $ npm install ipfs-api --save
+$ npm install body-parser
 ```
 
 Once you have that running, run an IPFS daemon
